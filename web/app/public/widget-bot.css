@@ -1,0 +1,299 @@
+/* 挂件按钮样式 - 基于MUI主题 */
+.widget-bot-button {
+  position: fixed;
+  right: 0;
+  bottom: 190px;
+  z-index: 9999;
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease-in-out;
+  border-radius: 18px 0 0 18px;
+  color: #FFFFFF;
+  box-shadow: 0px 6px 10px 0px rgba(54, 59, 76, 0.17);
+  padding: 11px;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: var(--font-gilory, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif);
+  border: none;
+}
+
+.widget-bot-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(50, 72, 242, 0.2);
+}
+
+.widget-bot-button.dragging {
+  cursor: grabbing;
+  transform: rotate(2deg);
+  box-shadow: 0 6px 12px rgba(50, 72, 242, 0.25);
+}
+
+.widget-bot-button-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: inherit;
+}
+
+.widget-bot-logo {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 8px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.widget-bot-text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.widget-bot-text span {
+  display: block;
+  margin: 1px 0;
+}
+
+/* 模态框样式 - 基于MUI主题 */
+.widget-bot-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.widget-bot-modal-content {
+  position: absolute;
+  width: 600px;
+  height: 725px;
+  max-width: calc(100% - 32px);
+  max-height: 80vh;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  animation: slideInUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 关闭按钮样式 - 基于MUI IconButton */
+.widget-bot-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  opacity: 0.5;
+  z-index: 10001;
+  transition: all 0.1s ease-in-out;
+  font-family: var(--font-gilory, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+}
+
+.widget-bot-close-btn:hover {
+  opacity: 1;
+}
+
+.widget-bot-close-btn:active {
+  transform: scale(0.95);
+}
+
+/* iframe样式 */
+.widget-bot-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 10px;
+  display: block;
+  background: #F8F9FA;
+}
+
+/* 防止页面滚动 */
+body.widget-bot-modal-open {
+  overflow: hidden;
+}
+
+/* 暗色主题支持 - 基于data-theme属性 */
+.widget-bot-button[data-theme="dark"] {
+  background: #6E73FE;
+  box-shadow: 0 2px 4px rgba(110, 115, 254, 0.15);
+}
+
+.widget-bot-button[data-theme="dark"]:hover {
+  background: #5d68fd;
+  box-shadow: 0 4px 8px rgba(110, 115, 254, 0.2);
+}
+
+.widget-bot-button[data-theme="dark"].dragging {
+  box-shadow: 0 6px 12px rgba(110, 115, 254, 0.25);
+}
+
+.widget-bot-modal[data-theme="dark"] {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.widget-bot-modal[data-theme="dark"] .widget-bot-modal-content {
+  background: #202531;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .widget-bot-button {
+    bottom: 16px;
+    padding: 8px;
+    border-radius: 10px 0 0 10px;
+  }
+
+  .widget-bot-text {
+    font-size: 12px;
+  }
+
+  .widget-bot-logo {
+    width: 16px;
+    height: 16px;
+    margin-bottom: 6px;
+  }
+
+  .widget-bot-modal-content {
+    width: calc(100% - 60.5px);
+    height: 90%;
+    max-width: none;
+    max-height: none;
+  }
+
+  .widget-bot-close-btn {
+    top: 8px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+}
+
+/* 小屏幕适配 */
+@media (max-width: 480px) {
+  .widget-bot-button {
+    bottom: 12px;
+    padding: 6px;
+  }
+
+  .widget-bot-text {
+    font-size: 11px;
+  }
+
+  .widget-bot-modal-content {
+    width: calc(100% - 55.5px);
+    height: 90%;
+    border-radius: 6px;
+  }
+
+  .widget-bot-close-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+}
+
+/* 确保挂件不会被其他元素遮挡 */
+.widget-bot-button,
+.widget-bot-modal {
+  pointer-events: auto;
+}
+
+/* 加载状态 */
+.widget-bot-button.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.widget-bot-button.loading::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #FFFFFF;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 减少动画模式支持 */
+@media (prefers-reduced-motion: reduce) {
+
+  .widget-bot-button,
+  .widget-bot-modal-content,
+  .widget-bot-close-btn,
+  .widget-bot-text span {
+    animation: none;
+    transition: none;
+  }
+
+  .widget-bot-button:hover,
+  .widget-bot-button.dragging {
+    transform: none;
+  }
+}
+
+/* 浅色主题样式 - 显式定义 */
+.widget-bot-button[data-theme="light"] {
+  background: #3248F2;
+  color: #FFFFFF;
+  box-shadow: 0px 6px 10px 0px rgba(54, 59, 76, 0.17);
+}
+
+.widget-bot-button[data-theme="light"]:hover {
+  background: #2a3cdb;
+  box-shadow: 0 4px 8px rgba(50, 72, 242, 0.2);
+}
+
+.widget-bot-button[data-theme="light"].dragging {
+  box-shadow: 0 6px 12px rgba(50, 72, 242, 0.25);
+}
+
+.widget-bot-modal[data-theme="light"] {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.widget-bot-modal[data-theme="light"] .widget-bot-modal-content {
+  background: #fff;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
